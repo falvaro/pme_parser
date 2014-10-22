@@ -1,0 +1,120 @@
+#Samples file
+sample.bd
+
+#Class information file
+symbol.type
+
+#Non-terminals
+Exp
+Sym
+ExpOp
+OpUn
+ROpUn
+OBExp
+OpBin
+OverExp
+Over
+OverSym
+LeftPar
+RightPar
+RPExp
+SSExp
+BigOpExp
+BigOp
+Sqrt
+Func
+2Let
+Let
+SupSym
+
+#Initial symbol of the grammar
+START
+Exp
+Sym
+
+#Terminal productions
+PTERM
+#S   ->   [t1, t2, ... tn]
+Sym      symbols.term
+Let      letters.term
+Over     over.term
+BigOp    bigop.term
+OpUn     opun.term
+ROpUn    ropun.term
+OpBin    opbin.term
+OverSym  oversym.term
+SupSym   supsyms.term
+LeftPar  leftpar.term
+RightPar rightpar.term
+Sqrt     sqrt.term
+
+#Binary productions
+PBIN
+#pr   t   S   ->   A        B        TeX-out         [Merge]
+1.0   Sup Exp      ExpOp    SupSym   "{$1}^{$2}"
+1.0   Sup Exp      Sym      SupSym   "{$1}^{$2}"
+1.0   Sub Exp      BigOp    Exp      "$1_{$2}"
+1.0   Sub Exp      BigOp    Sym      "$1_{$2}"
+1.0   H   Exp      Exp      Exp      "$1 $2"
+1.0   H   Exp      Exp      Sym      "$1 $2"
+1.0   H   Exp      Sym      Exp      "$1 $2"
+1.0   H   Exp      Sym      Sym      "$1 $2"
+1.0   H   Exp      OpUn     Exp      "$1 $2"
+1.0   H   Exp      OpUn     Sym      "$1 $2"
+1.0   H   Exp      Exp      ROpUn    "$1 $2"
+1.0   H   Exp      Sym      ROpUn    "$1 $2"
+1.0   H   Exp      Exp      OBExp    "$1 $2"
+1.0   H   Exp      Sym      OBExp    "$1 $2"
+1.0   H   OBExp    OpBin    Exp      "$1 $2"
+1.0   H   OBExp    OpBin    Sym      "$1 $2"
+1.0   Sup Exp      ExpOp    Exp      "{$1}^{$2}"
+1.0   Sup Exp      ExpOp    Sym      "{$1}^{$2}"
+1.0   Sup Exp      Sym      Exp      "{$1}^{$2}"
+1.0   Sup Exp      Sym      Sym      "{$1}^{$2}"
+1.0   Sub Exp      ExpOp    Exp      "{$1}_{$2}"
+1.0   Sub Exp      Sym      Exp      "{$1}_{$2}"
+1.0   Sub Exp      ExpOp    Sym      "{$1}_{$2}"
+1.0   Sub Exp      Sym      Sym      "{$1}_{$2}"
+1.0   V   Exp      Exp      OverExp  "\frac{$1}{$2}" ABB
+1.0   V   Exp      Sym      OverExp  "\frac{$1}{$2}" ABB
+1.0   V   OverExp  Over     Exp      "$2"            AAB
+1.0   V   OverExp  Over     Sym      "$2"            AAB
+1.0   Vs  Exp      OverSym  Exp      "$1{$2}"        BBB
+1.0   Vs  ExpOp    OverSym  Exp      "$1{$2}"        BBB
+1.0   Vs  Exp      OverSym  Sym      "$1{$2}"        BBB
+1.0   Vs  ExpOp    OverSym  Sym      "$1{$2}"        BBB
+1.0   Vs  Exp      OverSym  Exp      "$1{$2}"        BBB
+1.0   Vs  Exp      OverSym  Sym      "$1{$2}"        BBB
+1.0   H   Exp      LeftPar  RPExp    "$1 $2"
+1.0   H   ExpOp    LeftPar  RPExp    "$1 $2"
+1.0   H   RPExp    Exp      RightPar "$1 $2"
+1.0   H   RPExp    Sym      RightPar "$1 $2"
+1.0   H   Exp      ExpOp    SSExp    "{$1}$2"
+1.0   H   Exp      Sym      SSExp    "{$1}$2"
+1.0   H   Exp      BigOp    SSExp    "$1$2"
+1.0   SSE SSExp    Exp      Exp      "_{$2}^{$1}"
+1.0   SSE SSExp    Sym      Exp      "_{$2}^{$1}"
+1.0   SSE SSExp    Exp      Sym      "_{$2}^{$1}"
+1.0   SSE SSExp    Sym      Sym      "_{$2}^{$1}"
+1.0   SSE SSExp    SupSym   Exp      "_{$2}^{$1}"
+1.0   SSE SSExp    SupSym   Sym      "_{$2}^{$1}"
+1.0   SSE SSExp    Exp      SupSym   "_{$2}^{$1}"
+1.0   SSE SSExp    Sym      SupSym   "_{$2}^{$1}"
+1.0   SSE SSExp    SupSym   SupSym   "_{$2}^{$1}"
+1.0   V   Exp      Exp      BigOpExp "$2^{$1}"       BBB
+1.0   V   Exp      Sym      BigOpExp "$2^{$1}"       BBB
+1.0   V   BigOpExp BigOp    Exp      "$1_{$2}"       AAA
+1.0   V   BigOpExp BigOp    Sym      "$1_{$2}"       AAA
+1.0   H   Exp      BigOpExp Exp      "$1 $2"
+1.0   H   Exp      BigOpExp Sym      "$1 $2"
+1.0   Ins Exp      Sqrt     Exp      "\sqrt{$2}"
+1.0   Ins Exp      Sqrt     Sym      "\sqrt{$2}"
+1.0   H   Exp      Exp      Func     "$1 $2"
+1.0   H   Exp      Sym      Func     "$1 $2"
+1.0   H   Exp      Func     Exp      "$1 $2"
+1.0   H   Exp      Func     Sym      "$1 $2"
+1.0   H   Func     Let      2Let     "\mathop{$1$2}"
+1.0   H   Func     2Let     2Let     "\mathop{$1$2}"
+1.0   H   2Let     Let      Let      "$1$2"
+1.0   V   Exp      Func     Exp      "$1_{$2}"       AAA
+1.0   V   Exp      Func     Sym      "$1_{$2}"       AAA
