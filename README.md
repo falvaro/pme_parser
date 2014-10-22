@@ -44,7 +44,7 @@ for classification are provided.
 
 For instance, for recognizing the sample expression of image exp1.png
 
-![math expression sample](https://github.com/falvaro/pme_parser/tree/SampleExps/exp1.png "exp1.png")
+![math expression sample](https://raw.githubusercontent.com/falvaro/pme_parser/master/SampleExps/exp1.png "exp1.png")
 
 you only have to use the following command:
 
