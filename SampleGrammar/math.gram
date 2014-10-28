@@ -92,6 +92,8 @@ PBIN
 1.0   H   Exp      ExpOp    SSExp    "{$1}$2"
 1.0   H   Exp      Sym      SSExp    "{$1}$2"
 1.0   H   Exp      BigOp    SSExp    "$1$2"
+1.0   H   Exp      BigOp    Exp      "$1 $2"
+1.0   H   Exp      BigOp    Sym      "$1 $2"
 1.0   SSE SSExp    Exp      Exp      "_{$2}^{$1}"
 1.0   SSE SSExp    Sym      Exp      "_{$2}^{$1}"
 1.0   SSE SSExp    Exp      Sym      "_{$2}^{$1}"
