@@ -37,7 +37,7 @@ Sample::Sample(char *str) {
     data[y] = new unsigned char[X];
     for( int x=0; x<X; x++) {
       Color pc = img->pixelColor(x,y);
-      data[y][x] = 255*((float)pc.redQuantum()/MaxRGB);
+      data[y][x] = 255*((float)pc.quantumRed()/QuantumRange);
     }
   }
 
@@ -206,7 +206,7 @@ void Sample::getRegion(int *vec, int x, int y, int s, int t, int rp1, int rp2) {
   
   //Remove the pixels of the region that don't belong
   //to any connected component of rp1 or rp2 from the MFSET
-  Color white(MaxRGB,MaxRGB,MaxRGB);
+  Color white(QuantumRange,QuantumRange,QuantumRange);
   for(int i=y; i<=t; i++)
     for(int j=x; j<=s; j++) {
       int rp = mfset->find(j,i);
@@ -221,7 +221,7 @@ void Sample::getRegion(int *vec, int x, int y, int s, int t, int rp1, int rp2) {
   for(int i=0; i<15; i++)
     for(int j=0; j<15; j++) {
       Color pc = reg.pixelColor(j,i);
-      vec[i*15+j] = 255*((float)(pc.redQuantum())/MaxRGB);
+      vec[i*15+j] = 255*((float)(pc.quantumRed())/QuantumRange);
     }
   
 }
